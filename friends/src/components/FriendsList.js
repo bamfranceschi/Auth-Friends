@@ -1,6 +1,7 @@
 import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Friend from "./Friend";
+import Form from "./FriendForm";
 
 class FriendsList extends React.Component {
   state = {
@@ -25,6 +26,10 @@ class FriendsList extends React.Component {
       .catch(err => console.log(err));
   };
 
+  setFriendsList = friends => {
+    this.setState({ friendsList: friends });
+  };
+
   render() {
     return (
       <div>
@@ -39,6 +44,7 @@ class FriendsList extends React.Component {
               email={friend.email}
             />
           ))}
+          <Form setFriendsList={this.setFriendsList} />
         </div>
       </div>
     );
